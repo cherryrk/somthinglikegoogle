@@ -1,0 +1,81 @@
+<HTML>
+    <head>
+        <title>search bar</title>
+    </head>
+    <body>
+ 
+        </style>
+        <head>
+        </head>
+        <body>
+        
+        <div id="search"> 
+                 <div id="container1"> 
+                          <input type="text" id="searchin" placeholder="Search..." list="list" /> 
+                          <button id="btngo" class="btn btn-primary" type="button" disabled>Go</button> 
+                </div> 
+                <div id="container2"> 
+                          <ul id="list" > 
+                                     <li href="http://www.google.it">Google</li> 
+                                     <li href="http://www.yahoo.it">Yahoo</li> 
+                                     <li href="http://www.amazon.it">Amazon</li> 
+                                     <li href="https://www.zillow.com/profile/Sri%20Miriyala">Zillow</li>
+                                     <li href="https://www.youtube.com/watch?v=BktsEqveiqw">My videos</li> 
+                                     <li href="https://www.investopedia.com/ask/answers/101314/what-are-differences-among-real-estate-agent-broker-and-realtor.asp">work</li>
+                                     <li href="https://www.bing.com/search?FORM=U523DF&PC=U523&q=what+to+do+when+you+are+bored">What to do when you are bored</li>
+                                     <li href="https://www.whitehouse.gov/about-the-white-house/presidents/">presidents of USA</li>
+                                     <li href="https://sports.yahoo.com/">Sports yahoo</li>
+                                     <li href="https://www.twoplayergames.org/game/drunken-duel-2">two player games</li>
+                                     <li href="https://www.youtube.com/">youtube</li>
+                                     <li href="https://www.apple.com/?afid=p238%7CHNR4YAAe-dc_mtid_1870765e38482_pcrid_77653185869308_pgrid_2053191216_&cid=aos-us-kwbi-brand-apple--slid---product-">Apple website</li>
+                                     <li href="https://www.tdameritrade.com/why-td-ameritrade.html?TID=NA&s_kwcid=AL!2521!10!81432661723827!81432617413776&ef_id=a21b9093abbd1ecd23caf1654d7e5901:G:s&CID=PSCOMP">TD Ameritrade</li>
+                                     <li href="https://www.bing.com/">bing</li>
+                                     <li href="https://www.facebook.com/">facebook</li>
+                                     <li href="https://discord.com/">Discord</li>
+                                     <li href="https://www.cnn.com/">CNN</li>
+                                     <li href="https://www.walmart.com/?adid=22222222224226138098&wmlspartner=wmtlabs&wl0=e&wl1=o&wl2=c&wl3=10350711651&wl4=kwd-64003623973:aud-812472223:loc-190&wl5=91304&wl6=&wl7=&wl14=Walmart&veh=sem&gclid=8d6d293129da113c1ced48c7c1a3d70f&gclsrc=3p.ds&msclkid=8d6d293129da113c1ced48c7c1a3d70f">Walmart</li>
+                                     <li href="https://scratch.mit.edu/accounts/login/?next=/mystuff/">scratch</li>
+                         </ul> 
+                 </div>
+        </div>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        <script type="text/javascript">
+        
+        $('#searchin').bind('input', function() { 
+                     document.getElementById("list").style.display="none";
+                     document.getElementById("btngo").disabled=true;
+        
+                     if ($(this).val() != "") {
+                              var list = document.getElementById("list").childNodes;
+                              for (var i=0;i<list.length;i++) {
+                                        var values = list[i].innerHTML;
+                                        if(values){ 
+                                                 list[i].style.display="none";
+                                                 if (values.toLowerCase().includes($(this).val().toLowerCase()) == 1) {
+                                                          document.getElementById("list").style.display="block";
+                                                          list[i].style.display="block";
+                                                 }
+                                                 else {
+                                                          list[i].style.display="none";
+                                                 }
+                                         }
+                              }
+                       }
+        });
+        
+        $("#list li").click(function() {
+                      document.getElementById("searchin").value=this.outerText;
+                      document.getElementById("list").style.display="none"; 
+                      document.getElementById("btngo").disabled=false;
+        
+                      var link = $(this).attr("href");
+        
+                      document.getElementById("btngo").addEventListener("click", function(){
+                                       window.open(link,'_self',false)
+                      })
+        }); 
+        </script>
+
+    </body>
+</HTML>
